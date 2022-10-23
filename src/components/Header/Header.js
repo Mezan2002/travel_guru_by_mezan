@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Logo from "../../assets/images/logo.png";
 
 const Header = () => {
   return (
@@ -28,53 +29,75 @@ const Header = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <Link>Offers</Link>
+                <Link to="/home" className="mr-5">
+                  Home
+                </Link>
+                <Link to="/destination" className="mr-5">
+                  Destination
+                </Link>
               </li>
               <li>
-                <Link>Destination</Link>
+                <Link to="/booking" className="mr-5">
+                  Booking
+                </Link>
               </li>
               <li>
-                <Link>News</Link>
+                <Link to="/blog" className="mr-5">
+                  Blog
+                </Link>
               </li>
               <li>
-                <Link>Blog</Link>
+                <Link to="/about" className="mr-5">
+                  About Us
+                </Link>
               </li>
               <li>
-                <Link>About Us</Link>
-              </li>
-              <li>
-                <Link>Contact Us</Link>
+                <Link to="/contact" className="mr-5">
+                  Contact Us
+                </Link>
               </li>
             </ul>
           </div>
-          <Link className="btn btn-ghost normal-case text-xl">Logo</Link>
+          <Link to="/" className="btn btn-ghost normal-case text-xl">
+            <img className="w-24" src={Logo} alt="" />
+          </Link>
         </div>
         <div className="form-control">
           <input
             type="text"
             placeholder="search your destination"
-            className="input input-bordered"
+            className="input input-bordered mr-10"
           />
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
             <li>
-              <Link>Offers</Link>
+              <Link to="/home" className="mr-5">
+                Home
+              </Link>
+              <Link to="/destination" className="mr-5">
+                Destination
+              </Link>
             </li>
             <li>
-              <Link>Destination</Link>
+              <Link to="/booking" className="mr-5">
+                Booking
+              </Link>
             </li>
             <li>
-              <Link>News</Link>
+              <Link to="/blog" className="mr-5">
+                Blog
+              </Link>
             </li>
             <li>
-              <Link>Blog</Link>
+              <Link to="/about" className="mr-5">
+                About Us
+              </Link>
             </li>
             <li>
-              <Link>About Us</Link>
-            </li>
-            <li>
-              <Link>Contact Us</Link>
+              <Link to="/contact" className="mr-5">
+                Contact Us
+              </Link>
             </li>
           </ul>
         </div>
