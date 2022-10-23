@@ -5,6 +5,8 @@ import Booking from "../../components/Booking/Booking";
 import Contact from "../../components/Contact/Contact";
 import Destination from "../../components/Destination/Destination";
 import Home from "../../components/Home/Home";
+import Login from "../../components/Login/Login";
+import SignUp from "../../components/SignUp/SignUp";
 import Main from "../../layout/Main/Main";
 
 const routes = createBrowserRouter([
@@ -49,6 +51,14 @@ const routes = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact></Contact>,
+      },
+      {
+        path: "/logIn",
+        element: <Login></Login>,
+      },
+      {
+        path: "/signUp",
+        element: <SignUp></SignUp>,
       },
     ],
   },
