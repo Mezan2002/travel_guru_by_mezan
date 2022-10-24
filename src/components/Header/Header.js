@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/images/logo.png";
 import { AuthContext } from "../../contexts/AuthProvider";
+import UserIcon from "../../assets/images/icons/free-user-icon-3296-thumb.png";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -110,7 +111,7 @@ const Header = () => {
         </div>
         <div className="navbar-end mr-10">
           {user && user.uid ? (
-            <Link onClick={handleLogOut} className="btn">
+            <Link onClick={handleLogOut} className="btn mr-3">
               Log Out
             </Link>
           ) : (
@@ -118,11 +119,20 @@ const Header = () => {
               <Link to="/logIn" className="btn mr-3">
                 Log In
               </Link>
-              <Link to="/signUp" className="btn">
+              <Link to="/signUp" className="btn mr-3">
                 Sign Up
               </Link>
             </>
           )}
+          <div className="avatar">
+            <div className="w-12 rounded-full">
+              {user?.photoURL ? (
+                <img src={user?.photoURL} alt="" />
+              ) : (
+                <img src={UserIcon} alt="" />
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>

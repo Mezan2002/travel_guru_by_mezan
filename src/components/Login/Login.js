@@ -27,7 +27,7 @@ const Login = () => {
   };
   return (
     <div className="min-h-screen mt-14">
-      <div className="border w-4/12 mx-auto rounded-xl py-20">
+      <div className="border border-gray-500 w-4/12 mx-auto rounded-xl py-20">
         <h2 className="text-3xl font-semibold mb-10">Login</h2>
         <div className="w-9/12 mx-auto">
           <div className="inputGroup ">
@@ -60,7 +60,9 @@ const Login = () => {
           <button className="btn btn-primary w-full mt-10 ">Login</button>
           <h4 className="my-10">
             Don't have an account?{" "}
-            <Link className="underline">Create a new account</Link>
+            <Link to="/signUp" className="underline">
+              Create a new account
+            </Link>
           </h4>
           <div className="divider  mt-5">OR SIGN IN WITH</div>
           <div className="flex justify-center mt-5">
