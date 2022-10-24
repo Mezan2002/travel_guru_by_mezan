@@ -111,7 +111,7 @@ const Header = () => {
         </div>
         <div className="navbar-end mr-10">
           {user && user.uid ? (
-            <Link onClick={handleLogOut} className="btn mr-3">
+            <Link onClick={handleLogOut} className="btn mr-3 hidden">
               Log Out
             </Link>
           ) : (
@@ -124,13 +124,36 @@ const Header = () => {
               </Link>
             </>
           )}
-          <div className="avatar">
-            <div className="w-12 rounded-full">
+          <div className="dropdown dropdown-end">
+            <label tabIndex={0} className="">
               {user?.photoURL ? (
-                <img src={user?.photoURL} alt="" />
+                <img
+                  className="w-1/2 rounded-full"
+                  src={user.photoURL}
+                  alt=""
+                />
               ) : (
                 <img src={UserIcon} alt="" />
               )}
+            </label>
+            <div
+              tabIndex={0}
+              className="dropdown-content card card-compact w-64 p-2 shadow bg-dark text-dark-content"
+            >
+              <div className="card-body">
+                <img
+                  className="w-1/2 rounded-full mx-auto"
+                  src={user.photoURL}
+                  alt=""
+                />
+                <h3 className="card-title">{user.displayName}</h3>
+                <small className="text-xs">ID : {user.uid}</small>
+                <button className="btn btn-light rounded-full">
+                  View Profile
+                </button>
+                <div className="divider mt-5"></div>
+                <p></p>
+              </div>
             </div>
           </div>
         </div>

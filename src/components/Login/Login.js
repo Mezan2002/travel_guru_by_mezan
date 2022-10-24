@@ -1,13 +1,32 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import GoogleIcon from "../../assets/images/icons/icons8-google-48.png";
 import FacebookIcon from "../../assets/images/icons/icons8-facebook-48.png";
 import TwitterIcon from "../../assets/images/icons/icons8-twitter-48.png";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Login = () => {
-  const { signInWithGoogleAccount, signInWithFacebookAccount } =
+  const { signInWithGoogleAccount, signInWithFacebookAccount, logInUser } =
     useContext(AuthContext);
+  // error state
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  // handle submit
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    logInUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate("/");
+      })
+      .catch((error) => setError(error.message));
+  };
+
   const handleGoogleLogIn = () => {
     signInWithGoogleAccount()
       .then((result) => {
@@ -28,12 +47,14 @@ const Login = () => {
   return (
     <div className="min-h-screen mt-14">
       <div className="border border-gray-500 w-4/12 mx-auto rounded-xl py-20">
-        <h2 className="text-3xl font-semibold mb-10">Login</h2>
-        <div className="w-9/12 mx-auto">
+        <h2 className="text-3xl font-semibold mb-5">Login</h2>
+        <p className="text-red-500 mb-5">{error.slice(10, 300)}</p>
+        <form onSubmit={handleSubmit} className="w-9/12 mx-auto">
           <div className="inputGroup ">
             <input
               className="border-b-2 w-full py-3 pl-2 focus:outline-none text-xl"
               type="email"
+              name="email"
               placeholder="Username or Email"
             />
           </div>
@@ -41,6 +62,7 @@ const Login = () => {
             <input
               className="border-b-2 w-full py-3 pl-2 focus:outline-none text-xl mt-10"
               type="password"
+              name="password"
               placeholder="Password"
             />
           </div>
@@ -85,7 +107,7 @@ const Login = () => {
               <p className="">Twitter</p>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );

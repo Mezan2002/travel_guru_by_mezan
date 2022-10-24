@@ -12,13 +12,13 @@ const SignUp = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const from = event.target;
-    const firstName = from.firstName.value;
-    const lastName = from.lastName.value;
-    const photoURL = from.photoURL.value;
-    const email = from.email.value;
-    const password = from.password.value;
-    const confirmPassword = from.confirmPassword.value;
+    const form = event.target;
+    const firstName = form.firstName.value;
+    const lastName = form.lastName.value;
+    const photoURL = form.photoURL.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const confirmPassword = form.confirmPassword.value;
     if (password !== confirmPassword) {
       return setError(
         "CustomizedPassword is not matched with the confirm password"
@@ -28,7 +28,7 @@ const SignUp = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        from.reset();
+        form.reset();
       })
       .catch((error) => setError(error.message));
   };
